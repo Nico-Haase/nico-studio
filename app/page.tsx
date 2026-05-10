@@ -83,7 +83,7 @@ const services: ServiceCard[] = [
     icon: "◻",
     title: "Premium Web Design",
     description:
-      "Visuell starke, markengerechte Websites, die Vertrauen aufbauen – bevor der erste Satz gelesen wird. Jedes Detail ist auf deine Zielgruppe abgestimmt.",
+      "Visuell starke, markengerechte Websites, die Vertrauen aufbauen, bevor der erste Satz gelesen wird. Jedes Detail ist auf deine Zielgruppe abgestimmt.",
     tags: ["UI Design", "Branding", "Conversion"],
   },
   {
@@ -97,21 +97,21 @@ const services: ServiceCard[] = [
     icon: "◎",
     title: "Digitale Systeme & Module",
     description:
-      "Online-Buchung, Kontaktformulare, Bewertungsbereiche – als optionale Module, die nahtlos in deine Website integriert werden.",
+      "Online-Buchung, Kontaktformulare, Bewertungsbereiche als optionale Module, die nahtlos in deine Website integriert werden.",
     tags: ["Buchung", "Formulare", "Bewertungen"],
   },
   {
     icon: "◇",
     title: "Prozess-Automatisierung",
     description:
-      "Wiederkehrende Abläufe automatisieren: Bestätigungen, Erinnerungen, Follow-ups – damit du dich auf dein Kerngeschäft konzentrieren kannst.",
+      "Wiederkehrende Abläufe automatisieren: Bestätigungen, Erinnerungen, Follow-ups, damit du dich auf dein Kerngeschäft konzentrieren kannst.",
     tags: ["Workflows", "E-Mail", "CRM"],
   },
   {
     icon: "△",
     title: "Wartung & Betreuung",
     description:
-      "Regelmäßige Updates, Performance-Monitoring und persönlicher Support – deine Website bleibt dauerhaft auf höchstem Niveau.",
+      "Regelmäßige Updates, Performance-Monitoring und persönlicher Support, deine Website bleibt dauerhaft auf höchstem Niveau.",
     tags: ["Support", "Updates", "Hosting"],
   },
 ];
@@ -127,7 +127,7 @@ const steps: ProcessStep[] = [
     number: "02",
     title: "Konzept",
     description:
-      "Auf Basis der Analyse entwickle ich Struktur, Design und Texte – alles abgestimmt auf maximale Wirkung.",
+      "Auf Basis der Analyse entwickle ich Struktur, Design und Texte, alles abgestimmt auf maximale Wirkung.",
   },
   {
     number: "03",
@@ -364,7 +364,7 @@ export default function Page() {
           </h1>
 
           <p className="text-lg md:text-xl text-zinc-500 max-w-xl mb-8 leading-relaxed">
-            Ich entwickle premium Websites für lokale Dienstleister – designed
+            Ich entwickle premium Websites für lokale Dienstleister, designed
             für Vertrauen, gebaut für Conversions. Damit Besucher zu Anfragen
             werden, nicht zu Absprüngen.
           </p>
@@ -485,14 +485,14 @@ export default function Page() {
             </h2>
 
             <p className="text-zinc-500 text-lg leading-relaxed mb-6">
-              Ich bin Nico – ich entwickle moderne Websites und digitale
+              Ich bin Nico. Ich entwickle moderne Websites und digitale
               Systeme für lokale Dienstleister. Mein Fokus liegt auf
               Vertrauen, klarer Struktur und einem Auftritt, der mehr
               Anfragen generiert.
             </p>
             <p className="text-zinc-500 text-lg leading-relaxed mb-10">
               Kein anonymer Agenturprozess. Kein Ticket-System. Du hast
-              einen direkten Ansprechpartner – von der ersten Idee bis
+              einen direkten Ansprechpartner, von der ersten Idee bis
               zum Launch und darüber hinaus.
             </p>
 
@@ -500,7 +500,7 @@ export default function Page() {
               {[
                 {
                   title: "Spezialisiert auf lokale Dienstleister",
-                  desc: "Massage, Beauty, Fitness, Coaching – ich kenne deine Zielgruppe und was sie überzeugt.",
+                  desc: "Massage, Beauty, Fitness, Coaching. Ich kenne deine Zielgruppe und was sie überzeugt.",
                 },
                 {
                   title: "Design mit Wirkung",
@@ -508,7 +508,7 @@ export default function Page() {
                 },
                 {
                   title: "Direkter Kontakt",
-                  desc: "Du erreichst mich persönlich – schnelle Antworten, klare Kommunikation, keine Umwege.",
+                  desc: "Du erreichst mich persönlich: schnelle Antworten, klare Kommunikation, keine Umwege.",
                 },
               ].map((item) => (
                 <div
@@ -550,7 +550,7 @@ export default function Page() {
             {[
               {
                 title: "Kein professionelles Design",
-                desc: "Ein schlechter erster Eindruck entscheidet in Sekunden – der Besucher geht, ohne zu fragen.",
+                desc: "Ein schlechter erster Eindruck entscheidet in Sekunden. Der Besucher geht, ohne zu fragen.",
               },
               {
                 title: "Keine klare Botschaft",
@@ -558,7 +558,7 @@ export default function Page() {
               },
               {
                 title: "Nicht mobiloptimiert",
-                desc: "Über 70 % kommen per Smartphone – eine schlechte mobile Erfahrung kostet dich Kunden.",
+                desc: "Über 70 % kommen per Smartphone, und eine schlechte mobile Erfahrung kostet dich Kunden.",
               },
               {
                 title: "Kein Weg zur Anfrage",
@@ -609,7 +609,7 @@ export default function Page() {
             {[
               {
                 title: "Klares, premium Design",
-                desc: "Visuell stark, markengerecht, vertrauensaufbauend – schon beim ersten Blick.",
+                desc: "Visuell stark, markengerecht, vertrauensaufbauend, schon beim ersten Blick.",
               },
               {
                 title: "Conversion-optimierte Struktur",
@@ -621,7 +621,7 @@ export default function Page() {
               },
               {
                 title: "Optionale digitale Module",
-                desc: "Buchung, Automatisierung, Bewertungen – integrierbar, wenn es Sinn macht.",
+                desc: "Buchung, Automatisierung, Bewertungen, integrierbar, wenn es Sinn macht.",
               },
             ].map((item) => (
               <div
@@ -647,7 +647,7 @@ export default function Page() {
           <div className="mb-16">
             <SectionLabel>Leistungen</SectionLabel>
             <h2 className="text-4xl md:text-[52px] font-semibold tracking-tight leading-[1.08] max-w-xl">
-              Alles aus einer Hand – kein Flickenteppich.
+              Alles aus einer Hand, kein Flickenteppich.
             </h2>
           </div>
 
@@ -687,7 +687,7 @@ export default function Page() {
           <div className="mb-16">
             <SectionLabel>Referenz</SectionLabel>
             <h2 className="text-4xl md:text-[52px] font-semibold tracking-tight leading-[1.08] max-w-2xl">
-              Massage Studio – Ein vollständiges digitales System
+              Massage Studio: Ein vollständiges digitales System
             </h2>
           </div>
 
@@ -777,7 +777,7 @@ export default function Page() {
             <div>
               <p className="text-zinc-500 text-lg leading-relaxed mb-10">
                 Für ein lokales Massage-Studio habe ich einen vollständigen
-                digitalen Auftritt entwickelt – vom professionellen Design
+                digitalen Auftritt entwickelt, vom professionellen Design
                 über klare Inhaltsstruktur bis hin zu einem integrierten
                 Buchungsmodul als ergänzender Baustein.
               </p>
@@ -786,7 +786,7 @@ export default function Page() {
                 {[
                   {
                     title: "Professioneller erster Eindruck",
-                    desc: "Das Studio wirkt sofort vertrauenswürdig – Besucher bleiben und informieren sich.",
+                    desc: "Das Studio wirkt sofort vertrauenswürdig, Besucher bleiben und informieren sich.",
                   },
                   {
                     title: "Klare Struktur, mehr Anfragen",
@@ -794,7 +794,7 @@ export default function Page() {
                   },
                   {
                     title: "Buchung als optionales Modul",
-                    desc: "Integriert, weil es hier Sinn macht – nicht als Hauptfokus der Website.",
+                    desc: "Integriert, weil es hier Sinn macht, nicht als Hauptfokus der Website.",
                   },
                 ].map((item, idx) => (
                   <div key={item.title} className="flex gap-4">
@@ -819,7 +819,7 @@ export default function Page() {
           <div className="mb-16">
             <SectionLabel>Prozess</SectionLabel>
             <h2 className="text-4xl md:text-[52px] font-semibold tracking-tight leading-[1.08] max-w-2xl">
-              Von Idee zu Launch – in 4 Schritten.
+              Von Idee zu Launch in 4 Schritten.
             </h2>
           </div>
 
@@ -940,7 +940,7 @@ export default function Page() {
             Dein Studio verdient einen digitalen Auftritt auf höchstem Niveau.
           </h2>
           <p className="text-zinc-500 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
-            Schreib mir direkt – ich analysiere deinen aktuellen Auftritt
+            Schreib mir direkt, ich analysiere deinen aktuellen Auftritt
             und zeige dir in einem kostenlosen Gespräch, was möglich ist.
             Unverbindlich, ohne Verkaufsdruck.
           </p>

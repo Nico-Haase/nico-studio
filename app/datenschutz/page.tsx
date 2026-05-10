@@ -34,7 +34,7 @@ export default function Datenschutz() {
             <p>Verantwortlicher im Sinne der DSGVO ist:</p>
             <div className="mt-3 p-5 rounded-2xl bg-zinc-50 border border-zinc-100 text-zinc-700">
               Nico Haase · Nico Studio<br />
-              [Achstraße 65], [82386] [Oberhausen]<br />
+              Achstraße 65, 82386 Oberhausen<br />
               E-Mail:{" "}
               <a href="mailto:lokaltexte.service@gmail.com" className="text-zinc-900 underline underline-offset-4 hover:text-zinc-500 transition-colors">
                 lokaltexte.service@gmail.com

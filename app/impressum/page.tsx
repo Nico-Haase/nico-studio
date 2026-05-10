@@ -34,8 +34,8 @@ export default function Impressum() {
             <p>
               Nico Haase<br />
               Nico Studio<br />
-              [Straße & Hausnummer]<br />
-              [PLZ] [Ort]<br />
+              Achstraße 65<br />
+              82386 Oberhausen<br />
               Deutschland
             </p>
           </section>
@@ -63,8 +63,8 @@ export default function Impressum() {
             </h2>
             <p>
               Nico Haase<br />
-              [Straße & Hausnummer]<br />
-              [PLZ] [Ort]
+              Achstraße 65<br />
+              82386 Oberhausen
             </p>
           </section>
 
