@@ -1,480 +1,261 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
-
-// ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata = {
-  title: "Portfolio | Nico Studio",
-  description:
-    "Design-Beispiele für moderne Websites für Dienstleister, Handwerker, Coaches und mehr.",
+  title: "Müller Finanzberatung – Demo | Nico Studio",
+  description: "Demo-Website für eine Finanzberatung – erstellt von Nico Studio.",
 };
 
-// ─── Browser Frame Shell ──────────────────────────────────────────────────────
-
-function BrowserFrame({ children, bg = "bg-[#0e0e0e]" }: { children: ReactNode; bg?: string }) {
-  return (
-    <div className={`rounded-xl overflow-hidden shadow-2xl shadow-black/40 border border-white/[0.06] ${bg} w-full`}>
-      <div className="flex items-center gap-1.5 px-3 py-2.5 bg-white/[0.04] border-b border-white/[0.06]">
-        <div className="w-2 h-2 rounded-full bg-red-500/60" />
-        <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
-        <div className="w-2 h-2 rounded-full bg-green-500/60" />
-        <div className="flex-1 mx-2 bg-white/[0.06] rounded-full h-3" />
-      </div>
-      {children}
-    </div>
-  );
-}
-
-// ─── Mockup: Massage & Wellness ───────────────────────────────────────────────
-
-function MassageMockup() {
-  return (
-    <BrowserFrame bg="bg-[#0d0f0e]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-16 h-2.5 rounded-full bg-stone-400/60" />
-        <div className="flex gap-3">
-          {[40, 32, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-stone-500/40 border border-stone-400/20" />
-      </div>
-      <div className="px-4 pt-5 pb-3 text-center">
-        <div className="inline-block h-3 w-28 rounded-full bg-stone-400/30 mb-3" />
-        <div className="h-5 w-3/4 mx-auto rounded-full bg-white/70 mb-2" />
-        <div className="h-4 w-2/3 mx-auto rounded-full bg-white/40 mb-1" />
-        <div className="h-3 w-1/2 mx-auto rounded-full bg-white/20 mb-4" />
-        <div className="flex justify-center gap-2">
-          <div className="h-6 w-24 rounded-full bg-stone-500/70" />
-          <div className="h-6 w-20 rounded-full border border-white/20" />
-        </div>
-      </div>
-      <div className="px-4 pb-4 grid grid-cols-3 gap-2 mt-1">
-        {["Klassisch", "Hot Stone", "Aromaöl"].map((label) => (
-          <div key={label} className="rounded-lg bg-white/[0.04] border border-white/[0.07] p-2">
-            <div className="w-4 h-4 rounded-full bg-stone-500/40 mb-1.5" />
-            <div className="h-1.5 w-10 rounded-full bg-white/30 mb-1" />
-            <div className="h-1 w-8 rounded-full bg-white/15" />
-          </div>
-        ))}
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Mockup: Beauty Studio ────────────────────────────────────────────────────
-
-function BeautyMockup() {
-  return (
-    <BrowserFrame bg="bg-[#100d10]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-16 h-2.5 rounded-full bg-rose-300/60" />
-        <div className="flex gap-3">
-          {[40, 32, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-rose-500/30 border border-rose-400/20" />
-      </div>
-      <div className="relative mx-4 mt-4 rounded-xl overflow-hidden bg-rose-950/40 border border-rose-400/10 h-20 flex items-center justify-center">
-        <div className="text-center">
-          <div className="h-4 w-32 rounded-full bg-rose-200/50 mx-auto mb-1.5" />
-          <div className="h-2.5 w-20 rounded-full bg-white/20 mx-auto" />
-        </div>
-        <div className="absolute top-2 right-2 h-5 w-16 rounded-full bg-rose-500/50" />
-      </div>
-      <div className="px-4 pb-4 grid grid-cols-4 gap-1.5 mt-3">
-        {["bg-rose-900/40","bg-rose-800/30","bg-rose-950/50","bg-rose-900/20","bg-rose-800/40","bg-rose-900/30","bg-rose-950/40","bg-rose-800/20"].map((bg, i) => (
-          <div key={i} className={`h-8 rounded-lg ${bg} border border-rose-400/10`} />
-        ))}
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Mockup: Handwerk & Bau ───────────────────────────────────────────────────
-
-function HandwerkMockup() {
-  return (
-    <BrowserFrame bg="bg-[#0e0c09]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-20 h-2.5 rounded-full bg-amber-400/60" />
-        <div className="flex gap-3">
-          {[44, 36, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-amber-500/40 border border-amber-400/20" />
-      </div>
-      <div className="px-4 pt-4 flex items-start gap-3">
-        <div className="flex-1">
-          <div className="h-2 w-24 rounded-full bg-amber-400/40 mb-2" />
-          <div className="h-4 w-full rounded-full bg-white/70 mb-1.5" />
-          <div className="h-3.5 w-4/5 rounded-full bg-white/40 mb-3" />
-          <div className="flex gap-2">
-            <div className="h-6 w-20 rounded-full bg-amber-500/70" />
-            <div className="h-6 w-20 rounded-full border border-white/20" />
-          </div>
-        </div>
-        <div className="shrink-0 bg-white/[0.05] border border-white/[0.08] rounded-xl p-2 text-center w-20">
-          <div className="h-4 w-8 rounded bg-amber-400/60 mx-auto mb-1" />
-          <div className="h-1.5 w-12 rounded-full bg-white/20 mx-auto mb-2" />
-          <div className="h-3 w-6 rounded bg-amber-400/40 mx-auto mb-1" />
-          <div className="h-1.5 w-10 rounded-full bg-white/15 mx-auto" />
-        </div>
-      </div>
-      <div className="px-4 pb-4 grid grid-cols-3 gap-1.5 mt-3">
-        {[0,1,2].map((i) => (
-          <div key={i} className="rounded-lg bg-amber-950/30 border border-amber-400/10 h-14 flex flex-col justify-end p-1.5">
-            <div className="h-1.5 w-10 rounded-full bg-white/30 mb-1" />
-            <div className="h-1 w-8 rounded-full bg-white/15" />
-          </div>
-        ))}
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Mockup: Fitness & Personal Training ──────────────────────────────────────
-
-function FitnessMockup() {
-  return (
-    <BrowserFrame bg="bg-[#090909]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-20 h-2.5 rounded-full bg-lime-400/70" />
-        <div className="flex gap-3">
-          {[44, 36, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-lime-500/30 border border-lime-400/20" />
-      </div>
-      <div className="px-4 pt-4">
-        <div className="h-2 w-20 rounded-full bg-lime-400/40 mb-2" />
-        <div className="h-6 w-full rounded-md bg-white/80 mb-1" />
-        <div className="h-4 w-2/3 rounded-full bg-lime-400/50 mb-3" />
-        <div className="flex gap-2 mb-3">
-          <div className="h-7 w-28 rounded-full bg-lime-500/80" />
-          <div className="h-7 w-20 rounded-full border border-white/20" />
-        </div>
-      </div>
-      <div className="mx-4 mb-3 rounded-xl bg-white/[0.04] border border-white/[0.06] p-2 grid grid-cols-3 gap-2">
-        {[["200+","Kunden"],["5★","Bewertung"],["8 J.","Erfahrung"]].map(([val, lbl]) => (
-          <div key={lbl} className="text-center">
-            <div className="h-3.5 w-8 rounded bg-lime-400/50 mx-auto mb-1" />
-            <div className="h-1.5 w-10 rounded-full bg-white/20 mx-auto" />
-          </div>
-        ))}
-      </div>
-      <div className="px-4 pb-4 flex flex-wrap gap-1.5">
-        {["HIIT","Krafttraining","Yoga","1:1 Coaching"].map((tag) => (
-          <div key={tag} className="h-5 px-3 rounded-full bg-lime-500/15 border border-lime-400/20 flex items-center">
-            <div className="h-1.5 w-10 rounded-full bg-lime-400/50" />
-          </div>
-        ))}
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Mockup: Finanzberatung ────────────────────────────────────────────────────
-
-function FinanzMockup() {
-  return (
-    <BrowserFrame bg="bg-[#090c10]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-24 h-2.5 rounded-full bg-blue-400/60" />
-        <div className="flex gap-3">
-          {[52, 44, 36, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-blue-500/30 border border-blue-400/20" />
-      </div>
-      <div className="px-4 pt-4 flex gap-3">
-        <div className="flex-1">
-          <div className="h-2 w-24 rounded-full bg-blue-400/40 mb-2" />
-          <div className="h-4 w-full rounded-full bg-white/70 mb-1.5" />
-          <div className="h-3 w-4/5 rounded-full bg-white/40 mb-3" />
-          <div className="h-6 w-24 rounded-full bg-blue-500/60 mb-2" />
-          <div className="flex items-center gap-1.5">
-            <div className="w-4 h-4 rounded-full bg-blue-400/30 border border-blue-400/20" />
-            <div className="h-1.5 w-20 rounded-full bg-white/20" />
-          </div>
-        </div>
-        <div className="shrink-0 w-24 rounded-xl bg-blue-950/40 border border-blue-400/15 p-2">
-          <div className="w-6 h-6 rounded-full bg-blue-400/30 mb-2 mx-auto" />
-          <div className="h-1.5 w-14 rounded-full bg-white/30 mx-auto mb-1" />
-          <div className="h-1 w-10 rounded-full bg-white/15 mx-auto mb-2" />
-          <div className="h-4 w-full rounded-lg bg-blue-500/30" />
-        </div>
-      </div>
-      <div className="px-4 pb-4 mt-3 space-y-1.5">
-        {[80, 65, 72].map((w, i) => (
-          <div key={i} className="flex items-center gap-2 rounded-lg bg-white/[0.03] border border-white/[0.06] px-2.5 py-1.5">
-            <div className="w-3 h-3 rounded bg-blue-400/40" />
-            <div className="h-1.5 rounded-full bg-white/25" style={{ width: w }} />
-          </div>
-        ))}
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Mockup: Coaching ─────────────────────────────────────────────────────────
-
-function CoachingMockup() {
-  return (
-    <BrowserFrame bg="bg-[#090f0d]">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.05]">
-        <div className="w-16 h-2.5 rounded-full bg-emerald-400/60" />
-        <div className="flex gap-3">
-          {[44, 36, 44, 28].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-white/20" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-20 rounded-full bg-emerald-500/30 border border-emerald-400/20" />
-      </div>
-      <div className="px-4 pt-4 flex gap-3 items-center">
-        <div className="shrink-0 w-14 h-14 rounded-2xl bg-emerald-900/50 border border-emerald-400/15 flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full bg-emerald-400/30" />
-        </div>
-        <div className="flex-1">
-          <div className="h-2 w-20 rounded-full bg-emerald-400/40 mb-2" />
-          <div className="h-3.5 w-full rounded-full bg-white/65 mb-1.5" />
-          <div className="h-2.5 w-3/4 rounded-full bg-white/35" />
-        </div>
-      </div>
-      <div className="mx-4 mt-3 rounded-xl bg-emerald-950/40 border border-emerald-400/15 px-3 py-2">
-        <div className="h-1.5 w-full rounded-full bg-white/20 mb-1" />
-        <div className="h-1.5 w-4/5 rounded-full bg-white/15 mb-1" />
-        <div className="h-1.5 w-2/3 rounded-full bg-white/10 mb-2" />
-        <div className="flex items-center gap-1.5">
-          <div className="w-4 h-4 rounded-full bg-emerald-400/30" />
-          <div className="h-1.5 w-16 rounded-full bg-white/20" />
-        </div>
-      </div>
-      <div className="px-4 pb-4 mt-3 flex gap-2">
-        <div className="h-7 flex-1 rounded-full bg-emerald-500/60" />
-        <div className="h-7 flex-1 rounded-full border border-white/15" />
-      </div>
-    </BrowserFrame>
-  );
-}
-
-// ─── Portfolio Card ───────────────────────────────────────────────────────────
-
-interface CardProps {
-  tag: string;
-  title: string;
-  description: string;
-  features: string[];
-  accentColor: string;
-  mockup: ReactNode;
-}
-
-function PortfolioCard({ tag, title, description, features, accentColor, mockup }: CardProps) {
-  return (
-    <article className="group flex flex-col rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:shadow-2xl hover:shadow-zinc-200/70 hover:-translate-y-1.5 transition-all duration-300">
-      {/* Dark mockup area */}
-      <div className="relative bg-zinc-950 px-5 pt-5 pb-1 overflow-hidden" style={{ minHeight: 224 }}>
-        <div
-          className="absolute inset-0 opacity-25 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${accentColor}55 0%, transparent 70%)` }}
-        />
-        <div className="relative z-10 scale-[0.88] origin-top">
-          {mockup}
-        </div>
-      </div>
-
-      {/* Card text */}
-      <div className="flex flex-col flex-1 p-6">
-        <span className="inline-block text-[10px] font-semibold tracking-[0.18em] uppercase text-zinc-400 mb-3">
-          {tag}
-        </span>
-        <h3 className="text-lg font-semibold text-zinc-900 mb-2 leading-snug">{title}</h3>
-        <p className="text-[13px] text-zinc-500 leading-relaxed mb-5">{description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-6">
-          {features.map((f) => (
-            <span key={f} className="text-[11px] font-medium text-zinc-500 border border-zinc-200 bg-zinc-50 px-2.5 py-1 rounded-full">
-              {f}
-            </span>
-          ))}
-        </div>
-        <div className="mt-auto">
-          <a
-            href="mailto:lokaltexte.service@gmail.com"
-            className="group/btn inline-flex items-center gap-2 text-[13px] font-medium text-zinc-700 border border-zinc-200 px-4 py-2.5 rounded-full hover:bg-zinc-900 hover:border-zinc-900 hover:text-white active:scale-[0.98] transition-all duration-200"
-          >
-            Ähnliches Projekt anfragen
-            <span className="group-hover/btn:translate-x-0.5 transition-transform duration-200">→</span>
-          </a>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-// ─── Page Data ────────────────────────────────────────────────────────────────
-
-const items: CardProps[] = [
-  {
-    tag: "Wellness",
-    title: "Massage & Wellness",
-    description: "Ruhiges, vertrauenswürdiges Design mit klarer Leistungsstruktur und optionaler Online-Buchung – für Kunden, die Entspannung suchen.",
-    features: ["Online-Buchung", "Leistungsübersicht", "Mobiloptimiert", "SEO"],
-    accentColor: "#a8836a",
-    mockup: <MassageMockup />,
-  },
-  {
-    tag: "Beauty",
-    title: "Beauty Studio",
-    description: "Elegantes Layout mit Galerie und Preisliste – das die Hochwertigkeit des Studios sofort kommuniziert und Neukunden überzeugt.",
-    features: ["Galerie", "Preisliste", "Terminbuchung", "Bewertungen"],
-    accentColor: "#e879a0",
-    mockup: <BeautyMockup />,
-  },
-  {
-    tag: "Handwerk",
-    title: "Handwerk & Bau",
-    description: "Starke, klare Präsenz mit Referenzprojekten und Leistungsübersicht – damit Auftraggeber sofort Vertrauen fassen.",
-    features: ["Referenzprojekte", "Leistungen", "Anfrage-Formular", "Google Maps"],
-    accentColor: "#f59e0b",
-    mockup: <HandwerkMockup />,
-  },
-  {
-    tag: "Fitness",
-    title: "Fitness & Personal Training",
-    description: "Energetisches, motivierendes Design mit Kursplan und Trainer-Profil – das neue Mitglieder direkt zur Anmeldung führt.",
-    features: ["Kursplan", "Trainer-Profil", "Mitgliedschaft", "Ergebnisse"],
-    accentColor: "#84cc16",
-    mockup: <FitnessMockup />,
-  },
-  {
-    tag: "Finanzen",
-    title: "Finanzberatung",
-    description: "Seriöses, vertrauensaufbauendes Design mit strukturierten Leistungen und einem klaren Weg zur Erstberatung.",
-    features: ["Vertrauenssignale", "Leistungen", "Erstberatung", "Zertifikate"],
-    accentColor: "#3b82f6",
-    mockup: <FinanzMockup />,
-  },
-  {
-    tag: "Coaching",
-    title: "Coaching",
-    description: "Persönliches, inspirierendes Design mit starker Hero-Section, Testimonials und einem klaren Weg zur Erstberatung.",
-    features: ["Persönliches Branding", "Testimonials", "Erstgespräch", "Blog"],
-    accentColor: "#10b981",
-    mockup: <CoachingMockup />,
-  },
-];
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
-
-export default function PortfolioPage() {
+export default function FinanzDemo() {
   return (
     <main className="bg-white text-zinc-900 antialiased">
 
-      {/* NAV */}
-      <header className="border-b border-zinc-100 bg-white/90 backdrop-blur-xl sticky top-0 z-50">
+      {/* Demo Banner */}
+      <div className="bg-[#0f2044] text-white text-center py-2.5 px-4 text-[12px] tracking-wide">
+        <span className="text-blue-300">Demo-Website von</span>{" "}
+        <Link href="/" className="font-semibold text-white hover:text-blue-200 transition-colors">
+          Nico Studio
+        </Link>
+        <span className="text-blue-400 mx-3">·</span>
+        <Link href="/#kontakt" className="text-blue-300 hover:text-blue-100 transition-colors font-medium">
+          Eigene Website anfragen →
+        </Link>
+      </div>
+
+      {/* Nav */}
+      <nav className="sticky top-0 z-40 bg-white border-b border-zinc-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-[17px] font-semibold tracking-tight text-zinc-900 select-none">
-            Nico<span className="text-zinc-400">Studio</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-7 text-[13px] text-zinc-500">
-            {["Leistungen","Referenzen","Prozess","Preise"].map((item) => (
-              <Link key={item} href={`/#${item.toLowerCase()}`} className="hover:text-zinc-900 transition-colors duration-150">
-                {item}
-              </Link>
-            ))}
-            <Link href="/portfolio" className="text-zinc-900 font-semibold">Portfolio</Link>
-          </nav>
-          <Link href="/#kontakt" className="hidden md:inline-flex items-center bg-zinc-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-zinc-700 transition-colors duration-200">
-            Kostenlose Website-Analyse
-          </Link>
-          <Link href="/" className="md:hidden text-sm text-zinc-500 hover:text-zinc-900 transition-colors">← Zurück</Link>
-        </div>
-      </header>
-
-      {/* HERO */}
-      <section className="py-24 px-6 border-b border-zinc-100">
-        <div className="max-w-6xl mx-auto">
-          <span className="inline-block text-[11px] font-semibold tracking-[0.18em] uppercase text-zinc-400 mb-5">Portfolio</span>
-          <div className="grid md:grid-cols-2 gap-10 items-end">
-            <h1 className="text-4xl md:text-[56px] font-semibold tracking-tight leading-[1.06]">
-              Design-Beispiele{" "}
-              <span className="text-zinc-400">für verschiedene Branchen</span>
-            </h1>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-[#0f2044] flex items-center justify-center">
+              <span className="text-white font-bold text-xs">MF</span>
+            </div>
             <div>
-              <p className="text-lg text-zinc-500 leading-relaxed mb-6">
-                Jede Website wird individuell auf dein Unternehmen zugeschnitten – modern,
-                professionell und darauf ausgelegt, Anfragen zu generieren.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Premium Design","Mobiloptimiert","Conversion-fokussiert","2–3 Wochen Lieferzeit"].map((pill) => (
-                  <span key={pill} className="inline-flex items-center gap-1.5 text-[12px] font-medium text-zinc-600 bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-full">
-                    <span className="text-emerald-500 text-[10px]">✓</span>
-                    {pill}
-                  </span>
-                ))}
-              </div>
+              <p className="text-sm font-bold text-zinc-900 leading-none">Müller Finanzberatung</p>
+              <p className="text-[10px] text-zinc-400">Unabhängige Beratung seit 2005</p>
             </div>
+          </div>
+          <div className="hidden md:flex items-center gap-8 text-sm text-zinc-500">
+            {["Leistungen", "Philosophie", "Team", "Kontakt"].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`}
+                className="hover:text-zinc-900 transition-colors">
+                {item}
+              </a>
+            ))}
+          </div>
+          <a href="#erstberatung"
+            className="bg-[#0f2044] text-white text-sm px-5 py-2.5 rounded-lg font-semibold hover:bg-[#1a3560] transition-colors">
+            Erstberatung anfragen
+          </a>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="bg-[#0f2044] text-white py-28 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 border border-blue-700 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+              <span className="text-[11px] font-semibold tracking-widest uppercase text-blue-300">
+                Unabhängige Finanzberatung · Köln
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.06] mb-6">
+              Ihre Finanzen.<br />
+              <span className="text-blue-400">Ihre Entscheidung.</span>
+            </h1>
+            <p className="text-blue-200 text-lg leading-relaxed mb-10 max-w-lg">
+              Unabhängige Beratung ohne Provisionsinteressen. Wir arbeiten
+              ausschließlich für Sie, nicht für Produktanbieter.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="#erstberatung"
+                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors">
+                Kostenlose Erstberatung
+              </a>
+              <a href="#leistungen"
+                className="inline-flex items-center justify-center border border-blue-700 text-blue-200 px-8 py-4 rounded-lg text-sm font-semibold hover:border-blue-500 hover:text-white transition-colors">
+                Leistungen ansehen
+              </a>
+            </div>
+          </div>
+          {/* Trust metrics */}
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { val: "20 J.", lbl: "Erfahrung", sub: "Seit 2005 am Markt" },
+              { val: "98%", lbl: "Weiterempfehlung", sub: "Kundenbefragung 2025" },
+              { val: "350+", lbl: "Kunden", sub: "Privatpersonen & Unternehmen" },
+              { val: "Unabh.", lbl: "Beratung", sub: "Kein Provisionsinteresse" },
+            ].map((s) => (
+              <div key={s.lbl} className="bg-[#162d55] rounded-2xl p-6 border border-blue-900">
+                <p className="text-2xl font-bold text-white mb-1">{s.val}</p>
+                <p className="text-blue-300 text-sm font-semibold mb-1">{s.lbl}</p>
+                <p className="text-blue-500 text-xs">{s.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* GRID */}
-      <section className="py-20 px-6 bg-zinc-50">
+      {/* Leistungen */}
+      <section id="leistungen" className="py-24 px-6 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item) => <PortfolioCard key={item.title} {...item} />)}
+          <div className="mb-14">
+            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-600 block mb-4">
+              Leistungen
+            </span>
+            <h2 className="text-4xl font-bold tracking-tight">Ganzheitliche Finanzplanung</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "◈",
+                title: "Altersvorsorge",
+                desc: "Private Rente, betriebliche Altersvorsorge, Riester & Rürup. Wir finden die beste Lösung für Ihre Situation.",
+                items: ["Rentenanalyse", "Versorgungslücke ermitteln", "Produktvergleich", "Langzeitplanung"],
+              },
+              {
+                icon: "◻",
+                title: "Vermögensaufbau",
+                desc: "Kapitalanlage, ETF-Portfolios, Immobilien. Renditestark und risikogerecht.",
+                items: ["Anlageberatung", "ETF & Fonds", "Depot-Optimierung", "Steueroptimierung"],
+              },
+              {
+                icon: "◇",
+                title: "Absicherung",
+                desc: "Berufsunfähigkeit, Haftpflicht, Krankenversicherung. Sinnvoller Schutz ohne Überversicherung.",
+                items: ["Risikoanalyse", "BU-Versicherung", "PKV vs. GKV", "Haftpflicht"],
+              },
+              {
+                icon: "△",
+                title: "Immobilien",
+                desc: "Kauf oder Miete? Finanzierungsoptimierung, Tilgungsplanung und Fördermittel.",
+                items: ["Finanzierungsberatung", "Fördermittel", "Tilgungsplan", "Objektanalyse"],
+              },
+              {
+                icon: "◎",
+                title: "Nachfolgeplanung",
+                desc: "Erbschaft, Schenkung, Testament. Ihr Vermögen für die nächste Generation sichern.",
+                items: ["Erbschaftssteuer", "Schenkungsstrategie", "Testament", "Unternehmensnachfolge"],
+              },
+              {
+                icon: "○",
+                title: "Unternehmensberatung",
+                desc: "Für Selbstständige und Unternehmer. Von der GmbH-Gründung bis zur Betriebsrente.",
+                items: ["Gesellschaftsformen", "Betriebliche Altersvorsorge", "Liquiditätsplanung", "Exit-Strategie"],
+              },
+            ].map((s) => (
+              <div key={s.title}
+                className="group p-7 rounded-2xl bg-white border border-zinc-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all duration-300">
+                <span className="text-2xl text-blue-200 group-hover:text-blue-400 block mb-5 transition-colors">
+                  {s.icon}
+                </span>
+                <h3 className="font-bold text-zinc-900 mb-3">{s.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-5">{s.desc}</p>
+                <ul className="space-y-1.5">
+                  {s.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-xs text-zinc-500">
+                      <span className="w-1 h-1 rounded-full bg-blue-400 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* WHY NOTE */}
-      <section className="py-16 px-6 bg-white border-y border-zinc-100">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {[
-            { icon: "◻", title: "Kein Template", desc: "Jede Website entsteht individuell – angepasst an dein Angebot, deine Zielgruppe und deine Ziele." },
-            { icon: "◈", title: "Klare Struktur", desc: "Design und Inhalt sind so aufgebaut, dass Besucher geführt werden – direkt zur Anfrage." },
-            { icon: "◎", title: "Schnelle Lieferzeit", desc: "Von der Analyse bis zum Launch in 2–3 Wochen. Kein monatelanger Prozess." },
-          ].map((item) => (
-            <div key={item.title} className="flex gap-4">
-              <span className="text-2xl text-zinc-300 shrink-0 mt-0.5">{item.icon}</span>
-              <div>
-                <p className="font-semibold text-zinc-900 mb-1">{item.title}</p>
-                <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
-              </div>
+      {/* Philosophie */}
+      <section id="philosophie" className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-600 block mb-4">
+              Unsere Philosophie
+            </span>
+            <h2 className="text-4xl font-bold tracking-tight mb-6">
+              Unabhängig. Transparent. Langfristig.
+            </h2>
+            <p className="text-zinc-500 leading-relaxed mb-5">
+              Wir erhalten keine Provisionen von Produktanbietern. Unsere Vergütung
+              ist transparent und richtet sich ausschließlich nach unserem Beratungsaufwand.
+            </p>
+            <p className="text-zinc-500 leading-relaxed mb-10">
+              Das bedeutet: Wir empfehlen immer das, was für Sie am besten ist, nicht
+              das, was uns die höchste Provision einbringt.
+            </p>
+            <div className="space-y-4">
+              {[
+                { title: "Honorarberatung", desc: "Klare, transparente Kosten. Keine versteckten Provisionen." },
+                { title: "Produktunabhängig", desc: "Wir vergleichen den gesamten Markt, nicht nur Partner." },
+                { title: "Langfristige Begleitung", desc: "Einmal Kunde, immer Berater. Wir wachsen mit Ihnen." },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-zinc-100 hover:border-blue-100 transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-[#0f2044] flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-white text-[10px]">✓</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-zinc-900 mb-0.5">{item.title}</p>
+                    <p className="text-sm text-zinc-500">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          {/* Zertifikate */}
+          <div className="bg-zinc-50 rounded-3xl p-8">
+            <p className="font-bold text-zinc-900 mb-6">Qualifikationen & Zertifikate</p>
+            <div className="space-y-3">
+              {[
+                "Certified Financial Planner (CFP)",
+                "BaFin zugelassen §34f GewO",
+                "Mitglied im FPSB Deutschland",
+                "IHK geprüfter Finanzberater",
+                "Zertifizierter Nachlassberater",
+              ].map((cert) => (
+                <div key={cert} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-zinc-200">
+                  <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <span className="text-blue-600 text-xs">✓</span>
+                  </div>
+                  <span className="text-sm font-medium text-zinc-700">{cert}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-zinc-900 rounded-3xl px-10 py-20 text-center relative overflow-hidden">
-            <div aria-hidden className="pointer-events-none absolute inset-0 opacity-30" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 110%, rgba(161,161,170,0.4) 0%, transparent 70%)" }} />
-            <div className="relative z-10">
-              <span className="inline-block text-[11px] font-semibold tracking-[0.18em] uppercase text-zinc-400 mb-5">Dein Projekt</span>
-              <h2 className="text-3xl md:text-[48px] font-semibold tracking-tight leading-[1.08] text-white max-w-2xl mx-auto mb-5">
-                Gefällt dir ein Designstil?
-              </h2>
-              <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                Ich erstelle auch für dein Unternehmen eine moderne Website, die professionell aussieht und neue Kunden gewinnt.
-              </p>
-              <Link href="/#kontakt" className="inline-flex items-center gap-2 bg-white text-zinc-900 text-sm font-medium px-8 py-4 rounded-full hover:bg-zinc-100 active:scale-[0.98] transition-all duration-200 shadow-sm">
-                Kostenlose Website-Analyse →
-              </Link>
-              <p className="text-zinc-500 text-[13px] mt-5">Antwort innerhalb von 24 Stunden · Kein Verkaufsdruck</p>
-            </div>
-          </div>
+      <section id="erstberatung" className="py-24 px-6 bg-[#0f2044] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-400 block mb-5">
+            Erstberatung
+          </span>
+          <h2 className="text-4xl font-bold mb-5">
+            Kostenlose Erstberatung anfragen
+          </h2>
+          <p className="text-blue-200 mb-10 max-w-xl mx-auto leading-relaxed">
+            60 Minuten, unverbindlich und kostenlos. Wir analysieren Ihre Situation
+            und zeigen Ihnen, wo Optimierungspotenzial besteht.
+          </p>
+          <a href="mailto:info@mueller-finanz.de"
+            className="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-4 rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors">
+            Jetzt Termin vereinbaren
+          </a>
+          <p className="text-blue-500 text-xs mt-5">
+            Mo–Fr 9–18 Uhr · Telefonisch oder vor Ort in Köln
+          </p>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-zinc-100 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-zinc-400">
-          <Link href="/" className="text-base font-semibold text-zinc-900 tracking-tight">
-            Nico<span className="text-zinc-400">Studio</span>
-          </Link>
-          <div className="flex gap-6">
-            <Link href="/impressum" className="hover:text-zinc-700 transition-colors">Impressum</Link>
-            <Link href="/datenschutz" className="hover:text-zinc-700 transition-colors">Datenschutz</Link>
-            <Link href="/#kontakt" className="hover:text-zinc-700 transition-colors">Kontakt</Link>
-          </div>
-          <span>© 2026 Nico Studio. Alle Rechte vorbehalten.</span>
+      {/* Footer */}
+      <footer className="bg-[#080f1e] py-10 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-blue-900">
+          <span className="font-semibold text-blue-700">Müller Finanzberatung · Köln</span>
+          <span className="text-zinc-600">Demo-Website von{" "}
+            <Link href="/" className="text-zinc-400 hover:text-white transition-colors">Nico Studio</Link>
+          </span>
+          <span className="text-zinc-700">© 2026 Müller Finanzberatung</span>
         </div>
       </footer>
-
     </main>
   );
 }
