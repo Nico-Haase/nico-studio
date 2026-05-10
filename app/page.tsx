@@ -1,6 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { ReactNode } from "react";
+import Link from "next/link";
+
+// ─── FadeIn Component ─────────────────────────────────────────────────────────
+// Wraps any element and fades it in from below when it enters the viewport.
+// delay: stagger children (in ms), e.g. delay={100}
+
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(28px)",
+        transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -128,7 +177,7 @@ const plans: PricingPlan[] = [
   {
     name: "Betreuung",
     price: "49",
-    period: "/ Monat",
+    period: undefined,
     description: "Deine Website dauerhaft auf höchstem Niveau.",
     features: [
       "Monatliche Updates",
@@ -190,19 +239,20 @@ function OutlineButton({ href, children }: { href: string; children: React.React
 
 function NavBar() {
   const [open, setOpen] = useState(false);
-  const links = ["Leistungen", "Referenzen", "Prozess", "Preise"];
+
+  const anchorLinks = ["Leistungen", "Referenzen", "Prozess", "Preise"];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-100/80 shadow-sm shadow-zinc-100/50">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="text-[17px] font-semibold tracking-tight text-zinc-900 select-none">
+        <Link href="/" className="text-[17px] font-semibold tracking-tight text-zinc-900 select-none">
           Nico<span className="text-zinc-400">Studio</span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
-          {links.map((item) => (
+          {anchorLinks.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -211,6 +261,12 @@ function NavBar() {
               {item}
             </a>
           ))}
+          <Link
+            href="/portfolio"
+            className="text-[13px] text-zinc-500 hover:text-zinc-900 transition-colors duration-150"
+          >
+            Portfolio
+          </Link>
         </nav>
 
         <div className="hidden md:block">
@@ -232,11 +288,11 @@ function NavBar() {
       {/* Mobile dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          open ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="border-t border-zinc-100 bg-white/95 backdrop-blur-xl px-6 py-5 flex flex-col gap-4">
-          {links.map((item) => (
+          {anchorLinks.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -246,6 +302,13 @@ function NavBar() {
               {item}
             </a>
           ))}
+          <Link
+            href="/portfolio"
+            onClick={() => setOpen(false)}
+            className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors py-1"
+          >
+            Portfolio
+          </Link>
           <div className="pt-2">
             <PrimaryButton href="#kontakt">Kostenlose Website-Analyse</PrimaryButton>
           </div>
@@ -285,6 +348,7 @@ export default function Page() {
         />
 
         <div className="max-w-6xl mx-auto w-full">
+          <FadeIn delay={0}>
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 border border-zinc-200 bg-white rounded-full px-4 py-1.5 mb-10 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -325,46 +389,102 @@ export default function Page() {
           <div className="flex flex-col sm:flex-row gap-3">
             <PrimaryButton href="#kontakt">Kostenlose Website-Analyse</PrimaryButton>
             <OutlineButton href="#referenzen">Projekt ansehen →</OutlineButton>
+            <a
+              href="https://wa.me/4916093715960"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-200 text-zinc-600 text-sm font-medium px-7 py-3.5 rounded-full hover:border-green-300 hover:text-green-700 hover:bg-green-50 active:scale-[0.98] transition-all duration-200"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" className="text-green-500">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.529 5.855L.057 23.926a.5.5 0 0 0 .609.601l6.213-1.63A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 0 1-5.031-1.371l-.36-.214-3.733.98.997-3.645-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+              </svg>
+              WhatsApp
+            </a>
           </div>
-
-          {/* Scroll hint */}
-          <div className="mt-20 flex items-center gap-3 text-zinc-300 text-xs tracking-wider select-none">
-            <span className="block w-8 h-px bg-zinc-200" />
-            Scroll
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────────── */}
       <section className="border-y border-zinc-100 bg-zinc-50 py-14 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
-          {trustItems.map((item) => (
-            <div key={item.label} className="text-center">
-              <p className="text-[38px] font-semibold tracking-tight text-zinc-900 leading-none mb-2">
-                {item.value}
-              </p>
-              <p className="text-[13px] text-zinc-400 leading-snug">{item.label}</p>
-            </div>
+          {trustItems.map((item, idx) => (
+            <FadeIn key={item.label} delay={idx * 80}>
+              <div className="text-center">
+                <p className="text-[38px] font-semibold tracking-tight text-zinc-900 leading-none mb-2">
+                  {item.value}
+                </p>
+                <p className="text-[13px] text-zinc-400 leading-snug">{item.label}</p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          {/* Left – heading */}
-          <div>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.6fr] gap-12 items-start">
+
+          {/* Left – Photo */}
+          <FadeIn delay={0}>
+          <div className="flex flex-col items-center md:items-start gap-5">
+            <div className="relative w-full max-w-[320px]">
+              {/* Photo container */}
+              <div className="rounded-2xl overflow-hidden border border-zinc-100 shadow-xl shadow-zinc-200/50 aspect-[3/4] bg-zinc-100 w-full">
+                <img
+                  src="/images/nico.jpg"
+                  alt="Nico Haase – Nico Studio"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              {/* Floating name badge */}
+              <div className="absolute -bottom-4 -right-4 bg-white border border-zinc-100 shadow-lg rounded-2xl px-4 py-3">
+                <p className="text-sm font-semibold text-zinc-900 leading-none mb-0.5">Nico Haase</p>
+                <p className="text-[11px] text-zinc-400">Web Design & Entwicklung</p>
+              </div>
+            </div>
+
+            {/* Contact shortcuts under photo */}
+            <div className="mt-8 flex flex-col gap-2 w-full max-w-[320px]">
+              <a
+                href="mailto:lokaltexte.service@gmail.com"
+                className="flex items-center gap-3 text-sm text-zinc-600 hover:text-zinc-900 transition-colors group"
+              >
+                <span className="w-8 h-8 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center shrink-0 group-hover:border-zinc-400 transition-colors">
+                  ✉
+                </span>
+                lokaltexte.service@gmail.com
+              </a>
+              <a
+                href="https://wa.me/4916093715960"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-zinc-600 hover:text-green-700 transition-colors group"
+              >
+                <span className="w-8 h-8 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center shrink-0 group-hover:border-green-300 group-hover:bg-green-50 transition-colors">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="text-green-500">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.529 5.855L.057 23.926a.5.5 0 0 0 .609.601l6.213-1.63A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 0 1-5.031-1.371l-.36-.214-3.733.98.997-3.645-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+                  </svg>
+                </span>
+                0160 93715960
+              </a>
+            </div>
+          </div>
+          </FadeIn>
+
+          {/* Right – Text */}
+          <FadeIn delay={150}>
+          <div className="md:pt-2">
             <SectionLabel>Über mich</SectionLabel>
-            <h2 className="text-4xl md:text-[52px] font-semibold tracking-tight leading-[1.08]">
+            <h2 className="text-4xl md:text-[52px] font-semibold tracking-tight leading-[1.08] mb-8">
               Persönlich.{" "}
               <span className="text-zinc-400">Klar.</span>{" "}
               Ergebnisorientiert.
             </h2>
-          </div>
 
-          {/* Right – copy + highlights */}
-          <div>
-            <p className="text-zinc-500 text-lg leading-relaxed mb-8">
+            <p className="text-zinc-500 text-lg leading-relaxed mb-6">
               Ich bin Nico – ich entwickle moderne Websites und digitale
               Systeme für lokale Dienstleister. Mein Fokus liegt auf
               Vertrauen, klarer Struktur und einem Auftritt, der mehr
@@ -406,6 +526,8 @@ export default function Page() {
               ))}
             </div>
           </div>
+          </FadeIn>
+
         </div>
       </section>
 
@@ -530,10 +652,10 @@ export default function Page() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
+            {services.map((service, idx) => (
+              <FadeIn key={service.title} delay={idx * 80}>
               <div
-                key={service.title}
-                className="group p-8 rounded-2xl border border-zinc-200 bg-white hover:shadow-xl hover:shadow-zinc-200/60 hover:-translate-y-1 transition-all duration-300 cursor-default"
+                className="group p-8 rounded-2xl border border-zinc-200 bg-white hover:shadow-xl hover:shadow-zinc-200/60 hover:-translate-y-1 transition-all duration-300 cursor-default h-full"
               >
                 <span className="text-[32px] text-zinc-200 group-hover:text-zinc-800 transition-colors duration-300 block mb-6">
                   {service.icon}
@@ -553,6 +675,7 @@ export default function Page() {
                   ))}
                 </div>
               </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -702,8 +825,8 @@ export default function Page() {
 
           <div className="grid md:grid-cols-4 gap-8">
             {steps.map((step, idx) => (
-              <div key={step.number} className="relative group">
-                {/* Connector line */}
+              <FadeIn key={step.number} delay={idx * 100}>
+              <div className="relative group">
                 {idx < steps.length - 1 && (
                   <div className="hidden md:block absolute top-5 left-[calc(100%-0.5rem)] w-full h-px bg-gradient-to-r from-zinc-200 to-transparent z-0" />
                 )}
@@ -715,6 +838,7 @@ export default function Page() {
                   <p className="text-[13px] text-zinc-500 leading-relaxed">{step.description}</p>
                 </div>
               </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -731,9 +855,9 @@ export default function Page() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 items-start">
-            {plans.map((plan) => (
+            {plans.map((plan, idx) => (
+              <FadeIn key={plan.name} delay={idx * 100}>
               <div
-                key={plan.name}
                 className={`relative rounded-2xl p-8 transition-all duration-300 ${
                   plan.highlight
                     ? "bg-zinc-900 text-white shadow-2xl shadow-zinc-300/40 scale-[1.02]"
@@ -789,6 +913,7 @@ export default function Page() {
                   {plan.cta}
                 </a>
               </div>
+              </FadeIn>
             ))}
           </div>
 
@@ -809,6 +934,7 @@ export default function Page() {
           }}
         />
         <div className="max-w-6xl mx-auto text-center relative z-10">
+          <FadeIn delay={0}>
           <SectionLabel>Los geht&apos;s</SectionLabel>
           <h2 className="text-4xl md:text-[60px] font-semibold tracking-tight leading-[1.06] max-w-3xl mx-auto mb-6">
             Dein Studio verdient einen digitalen Auftritt auf höchstem Niveau.
@@ -818,27 +944,41 @@ export default function Page() {
             und zeige dir in einem kostenlosen Gespräch, was möglich ist.
             Unverbindlich, ohne Verkaufsdruck.
           </p>
-          <PrimaryButton href="mailto:lokaltexte.service@gmail.com">
-            Kostenlose Website-Analyse →
-          </PrimaryButton>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <PrimaryButton href="mailto:lokaltexte.service@gmail.com">
+              Kostenlose Website-Analyse →
+            </PrimaryButton>
+            <a
+              href="https://wa.me/4916093715960"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-200 bg-white text-zinc-700 text-sm font-medium px-7 py-3.5 rounded-full hover:border-zinc-400 hover:text-zinc-900 hover:bg-zinc-50 active:scale-[0.98] transition-all duration-200 shadow-sm"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-green-500">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.529 5.855L.057 23.926a.5.5 0 0 0 .609.601l6.213-1.63A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 0 1-5.031-1.371l-.36-.214-3.733.98.997-3.645-.235-.374A9.862 9.862 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/>
+              </svg>
+              WhatsApp schreiben
+            </a>
+          </div>
           <p className="text-zinc-400 text-[13px] mt-6">
             Antwort von Nico innerhalb von 24 Stunden · Kein Verkaufsdruck
           </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
       <footer className="border-t border-zinc-100 py-10 px-6 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-zinc-400">
-          <a href="#" className="text-base font-semibold text-zinc-900 tracking-tight">
+          <Link href="/" className="text-base font-semibold text-zinc-900 tracking-tight">
             Nico<span className="text-zinc-400">Studio</span>
-          </a>
+          </Link>
           <div className="flex gap-6">
-            {["Impressum", "Datenschutz", "Kontakt"].map((l) => (
-              <a key={l} href="#" className="hover:text-zinc-700 transition-colors">
-                {l}
-              </a>
-            ))}
+            <Link href="/impressum" className="hover:text-zinc-700 transition-colors">Impressum</Link>
+            <Link href="/datenschutz" className="hover:text-zinc-700 transition-colors">Datenschutz</Link>
+            <a href="#kontakt" className="hover:text-zinc-700 transition-colors">Kontakt</a>
+            <a href="https://wa.me/4916093715960" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-700 transition-colors">WhatsApp</a>
           </div>
           <span>© 2026 Nico Studio. Alle Rechte vorbehalten.</span>
         </div>
