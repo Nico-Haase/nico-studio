@@ -7,158 +7,115 @@ export const metadata = {
 
 export default function MassageDemo() {
   return (
-    <main className="bg-[#faf8f5] text-[#1a1714] antialiased">
+    <main className="bg-[#f8f6f1] text-[#1c1a17] antialiased">
 
       {/* Demo Banner */}
-      <div className="bg-[#1a1714] text-white text-center py-2.5 px-4 text-[12px] tracking-wide">
+      <div className="bg-[#1c1a17] text-white text-center py-2.5 px-4 text-[12px] tracking-wide">
         <span className="text-zinc-400">Demo-Website von</span>{" "}
-        <Link href="/" className="font-semibold text-white hover:text-zinc-300 transition-colors">
-          Nico Studio
-        </Link>
-        <span className="text-zinc-400 mx-3">·</span>
-        <Link href="/#kontakt" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
-          Eigene Website anfragen →
-        </Link>
+        <Link href="/" className="font-semibold text-white hover:text-zinc-300 transition-colors">Nico Studio</Link>
+        <span className="text-zinc-500 mx-3">·</span>
+        <Link href="/#kontakt" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">Eigene Website anfragen →</Link>
       </div>
 
       {/* Nav */}
-      <nav className="sticky top-0 z-40 bg-[#faf8f5]/90 backdrop-blur-md border-b border-stone-200/60">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-tight text-[#1a1714]">
-            Serenity<span className="text-stone-400 font-light"> Wellness</span>
-          </span>
-          <div className="hidden md:flex items-center gap-8 text-sm text-stone-500">
-            {["Angebote", "Über uns", "Preise", "Kontakt"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`}
-                className="hover:text-[#1a1714] transition-colors">
-                {item}
-              </a>
+      <nav className="sticky top-0 z-40 bg-[#f8f6f1]/95 backdrop-blur-md border-b border-stone-200/40">
+        <div className="max-w-6xl mx-auto px-8 h-18 flex items-center justify-between py-4">
+          <div>
+            <span className="text-xl font-light tracking-[0.15em] text-[#1c1a17] uppercase">Serenity</span>
+            <span className="text-xs tracking-[0.3em] text-stone-400 block uppercase">Wellness & Massage</span>
+          </div>
+          <div className="hidden md:flex items-center gap-10 text-[13px] tracking-wide text-stone-500">
+            {["Angebote", "Ablauf", "Preise", "Kontakt"].map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-[#1c1a17] transition-colors">{item}</a>
             ))}
           </div>
-          <a href="#termin"
-            className="bg-[#1a1714] text-white text-sm px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors">
+          <a href="#termin" className="border border-[#1c1a17] text-[#1c1a17] text-xs tracking-[0.15em] uppercase px-6 py-3 hover:bg-[#1c1a17] hover:text-white transition-all duration-300">
             Termin buchen
           </a>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 pt-24 pb-20">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      {/* Hero – full bleed, zen */}
+      <section className="min-h-screen flex items-center px-8 relative overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-stone-200/40" />
+        <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-20 items-center relative z-10">
           <div>
-            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-400 block mb-6">
-              Massage & Wellness · München
-            </span>
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.06] mb-6 text-[#1a1714]">
-              Dein Moment der<br />
-              <span className="text-stone-400">tiefen Ruhe.</span>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-8">München · Seit 2016</p>
+            <h1 className="text-6xl md:text-7xl font-light tracking-tight leading-[1.1] mb-8 text-[#1c1a17]">
+              Stille.<br />
+              Wärme.<br />
+              <em className="italic text-stone-400">Heilung.</em>
             </h1>
-            <p className="text-stone-500 text-lg leading-relaxed mb-10">
-              Professionelle Massage-Therapie für Körper und Geist.
-              Individuelle Behandlungen, die wirklich ankommen.
+            <p className="text-stone-500 text-lg leading-loose mb-12 max-w-sm">
+              Professionelle Massagetherapie, die tief wirkt. Jede Behandlung
+              individuell, jeder Moment ganz für dich.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#termin"
-                className="inline-flex items-center justify-center bg-[#1a1714] text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-stone-700 transition-colors">
-                Termin online buchen
+            <div className="flex items-center gap-6">
+              <a href="#termin" className="bg-[#1c1a17] text-white text-xs tracking-[0.2em] uppercase px-8 py-4 hover:bg-stone-700 transition-colors">
+                Termin vereinbaren
               </a>
-              <a href="#angebote"
-                className="inline-flex items-center justify-center border border-stone-300 text-stone-600 px-8 py-4 rounded-full text-sm font-medium hover:border-stone-500 hover:text-[#1a1714] transition-colors">
-                Angebote ansehen
+              <a href="#angebote" className="text-xs tracking-[0.2em] uppercase text-stone-500 hover:text-[#1c1a17] transition-colors">
+                Angebote entdecken →
               </a>
             </div>
           </div>
-          {/* Image placeholder */}
           <div className="relative">
-            <div className="aspect-[4/5] rounded-3xl bg-stone-200 overflow-hidden">
-              <div className="absolute inset-0 flex items-end p-8">
-                <div className="bg-white/90 backdrop-blur rounded-2xl p-5 w-full">
-                  <div className="flex items-center gap-3 mb-1">
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4,5].map(i => (
-                        <svg key={i} className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="text-sm font-semibold text-[#1a1714]">4.9 / 5.0</span>
-                  </div>
-                  <p className="text-xs text-stone-500">Über 120 zufriedene Kunden</p>
+            <div className="aspect-[3/4] bg-stone-300/60 rounded-none relative">
+              <div className="absolute -bottom-8 -left-8 bg-[#f8f6f1] border border-stone-200 p-6 shadow-sm">
+                <div className="flex gap-1 mb-2">
+                  {[1,2,3,4,5].map(i => <span key={i} className="text-amber-400 text-sm">★</span>)}
                 </div>
+                <p className="text-xs text-stone-600 max-w-[160px] leading-relaxed">"Die beste Massage, die ich je erlebt habe."</p>
+                <p className="text-[10px] text-stone-400 mt-2">Maria K., Kundin seit 2021</p>
               </div>
-            </div>
-            {/* Floating badge */}
-            <div className="absolute -top-4 -right-4 bg-stone-800 text-white rounded-2xl px-4 py-3 text-center">
-              <p className="text-2xl font-semibold">8+</p>
-              <p className="text-[10px] text-stone-400 uppercase tracking-wider">Jahre Erfahrung</p>
+              <div className="absolute -top-4 -right-4 bg-stone-800 text-white p-5 text-center">
+                <p className="text-3xl font-light">8</p>
+                <p className="text-[10px] tracking-widest uppercase text-stone-400 mt-1">Jahre</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="angebote" className="bg-white py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-14">
-            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-400 block mb-4">
-              Unsere Angebote
-            </span>
-            <h2 className="text-4xl font-semibold tracking-tight">
-              Behandlungen für dein Wohlbefinden
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
+      {/* Philosophie */}
+      <section className="py-28 px-8 bg-[#1c1a17] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-500 mb-8">Unsere Philosophie</p>
+          <h2 className="text-4xl md:text-5xl font-light leading-[1.3] text-stone-100">
+            "Der Körper spricht. <em className="italic text-stone-400">Wir hören zu.</em>"
+          </h2>
+          <div className="w-12 h-px bg-stone-600 mx-auto my-10" />
+          <p className="text-stone-400 text-lg leading-loose max-w-xl mx-auto">
+            Jede Behandlung beginnt mit einem Gespräch. Was brauchst du heute?
+            Entspannung, Schmerzlinderung oder einfach Zeit für dich?
+          </p>
+        </div>
+      </section>
+
+      {/* Angebote */}
+      <section id="angebote" className="py-28 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-4">Behandlungen</p>
+          <h2 className="text-4xl font-light mb-20">Unsere Angebote</h2>
+          <div className="grid md:grid-cols-3 gap-1">
             {[
-              {
-                name: "Klassische Massage",
-                duration: "60 Min.",
-                price: "75 €",
-                desc: "Entspannung für den ganzen Körper. Ideal bei Verspannungen und Stress.",
-              },
-              {
-                name: "Hot Stone Massage",
-                duration: "90 Min.",
-                price: "110 €",
-                desc: "Wärme und Tiefenentspannung durch vulkanische Basaltsteine.",
-              },
-              {
-                name: "Aromaöl Massage",
-                duration: "75 Min.",
-                price: "95 €",
-                desc: "Duftende Öle für Körper und Seele. Sanft und regenerierend.",
-              },
-              {
-                name: "Sportmassage",
-                duration: "60 Min.",
-                price: "80 €",
-                desc: "Gezielte Behandlung für Sportler und aktive Menschen.",
-              },
-              {
-                name: "Rücken & Nacken",
-                duration: "45 Min.",
-                price: "55 €",
-                desc: "Fokus auf Problemzonen. Effektiv gegen Büro-Verspannungen.",
-              },
-              {
-                name: "Wellness-Paket",
-                duration: "120 Min.",
-                price: "149 €",
-                desc: "Das Rundum-Erlebnis. Massage, Wärme und Aromatherapie kombiniert.",
-              },
-            ].map((s) => (
-              <div key={s.name}
-                className="group p-7 rounded-2xl border border-stone-100 hover:border-stone-300 hover:shadow-lg hover:shadow-stone-100 transition-all duration-300 cursor-default">
+              { name: "Klassische Massage", dauer: "60 Min", preis: "75 €", desc: "Ganzkörperentspannung mit langen, fließenden Griffen. Löst Verspannungen, beruhigt das Nervensystem." },
+              { name: "Hot Stone Massage", dauer: "90 Min", preis: "115 €", desc: "Vulkanische Basaltsteine wärmen die Muskulatur tief durch. Intensiv entspannend, wohltuend bis in den Kern.", featured: true },
+              { name: "Aromatherapie", dauer: "75 Min", preis: "95 €", desc: "Erlesene ätherische Öle verstärken die Wirkung der Massage. Körper, Geist und Seele in Balance." },
+              { name: "Tiefengewebsmassage", dauer: "60 Min", preis: "85 €", desc: "Gezielte Arbeit in tiefen Muskelschichten. Effektiv bei chronischen Verspannungen und Schmerzen." },
+              { name: "Rücken & Nacken", dauer: "45 Min", preis: "60 €", desc: "Fokussierte Behandlung der häufigsten Problemzonen. Ideal für den Büroalltag." },
+              { name: "Wellness-Ritual", dauer: "120 Min", preis: "155 €", desc: "Das komplette Erlebnis. Hot Stone, Aromaöl und Ganzkörpermassage in einer Session." },
+            ].map(s => (
+              <div key={s.name} className={`p-8 border-b border-r border-stone-100 ${s.featured ? 'bg-stone-50' : 'bg-white'} hover:bg-stone-50 transition-colors group`}>
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-semibold text-[#1a1714]">{s.name}</h3>
-                  <span className="text-stone-400 text-sm">{s.duration}</span>
+                  <h3 className="font-medium text-[#1c1a17]">{s.name}</h3>
+                  {s.featured && <span className="text-[9px] tracking-widest uppercase bg-stone-800 text-white px-2 py-1">Beliebt</span>}
                 </div>
-                <p className="text-stone-500 text-sm leading-relaxed mb-5">{s.desc}</p>
+                <p className="text-stone-400 text-xs mb-4">{s.dauer}</p>
+                <p className="text-stone-500 text-sm leading-relaxed mb-6">{s.desc}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-semibold text-[#1a1714]">{s.price}</span>
-                  <a href="#termin"
-                    className="text-xs font-medium text-stone-500 border border-stone-200 px-3 py-1.5 rounded-full hover:border-stone-400 hover:text-[#1a1714] transition-colors">
-                    Buchen
-                  </a>
+                  <span className="text-xl font-light text-[#1c1a17]">{s.preis}</span>
+                  <a href="#termin" className="text-xs tracking-wide text-stone-400 group-hover:text-[#1c1a17] transition-colors">Buchen →</a>
                 </div>
               </div>
             ))}
@@ -166,39 +123,31 @@ export default function MassageDemo() {
         </div>
       </section>
 
-      {/* About */}
-      <section className="py-24 px-6 bg-[#faf8f5]">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="aspect-square rounded-3xl bg-stone-200 relative overflow-hidden">
-            <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur rounded-2xl p-5">
-              <p className="font-semibold text-[#1a1714] mb-1">Sandra Meier</p>
-              <p className="text-xs text-stone-500">Zertifizierte Massagetherapeutin · seit 2016</p>
+      {/* Über */}
+      <section className="py-28 px-8 bg-[#f8f6f1]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+          <div className="aspect-[4/5] bg-stone-300/60 relative">
+            <div className="absolute bottom-0 right-0 left-0 bg-[#1c1a17]/80 backdrop-blur p-6">
+              <p className="text-white font-light text-lg">Sandra Meier</p>
+              <p className="text-stone-400 text-xs tracking-widest uppercase mt-1">Zertifizierte Massagetherapeutin</p>
             </div>
           </div>
           <div>
-            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-400 block mb-4">
-              Über uns
-            </span>
-            <h2 className="text-4xl font-semibold tracking-tight mb-6">
-              Handwerk mit Herz und Erfahrung.
-            </h2>
-            <p className="text-stone-500 leading-relaxed mb-5">
-              Ich glaube daran, dass jeder Mensch das Recht auf echte Entspannung hat.
-              Seit über 8 Jahren begleite ich meine Kunden auf dem Weg zu mehr Wohlbefinden.
+            <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-6">Über mich</p>
+            <h2 className="text-4xl font-light mb-8">Mit Erfahrung und Hingabe.</h2>
+            <p className="text-stone-500 leading-loose mb-6">
+              Seit 8 Jahren begleite ich Menschen auf ihrem Weg zu mehr Wohlbefinden.
+              Jede Behandlung ist für mich eine Begegnung, kein Dienstleistungsvorgang.
             </p>
-            <p className="text-stone-500 leading-relaxed mb-8">
-              Jede Behandlung ist individuell auf dich abgestimmt. Dein Körper, deine Bedürfnisse,
-              dein Tempo.
+            <p className="text-stone-500 leading-loose mb-10">
+              Ausgebildet in klassischer Massagetherapie, Hot Stone und Aromatherapie.
+              Weiterbildungen in ganzheitlicher Körperarbeit und Stressmedizin.
             </p>
             <div className="grid grid-cols-3 gap-4">
-              {[
-                { val: "120+", lbl: "Kunden" },
-                { val: "8 J.", lbl: "Erfahrung" },
-                { val: "6", lbl: "Behandlungen" },
-              ].map((s) => (
-                <div key={s.lbl} className="text-center p-4 rounded-2xl bg-stone-100">
-                  <p className="text-2xl font-semibold text-[#1a1714]">{s.val}</p>
-                  <p className="text-xs text-stone-500 mt-1">{s.lbl}</p>
+              {[["120+", "Kunden"], ["8 J.", "Erfahrung"], ["6", "Techniken"]].map(([v, l]) => (
+                <div key={l} className="text-center p-4 border border-stone-200">
+                  <p className="text-2xl font-light text-[#1c1a17]">{v}</p>
+                  <p className="text-[10px] tracking-widest uppercase text-stone-400 mt-1">{l}</p>
                 </div>
               ))}
             </div>
@@ -206,73 +155,78 @@ export default function MassageDemo() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-semibold tracking-tight mb-14 text-center">
-            Was Kunden sagen
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+      {/* Ablauf */}
+      <section id="ablauf" className="py-28 px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-4 text-center">Wie es läuft</p>
+          <h2 className="text-4xl font-light mb-16 text-center">Dein Weg zur Behandlung</h2>
+          <div className="space-y-0">
             {[
-              {
-                name: "Maria K.",
-                text: "Endlich mal eine Massage, bei der ich wirklich abschalten konnte. Wärme, Ruhe, top Qualität.",
-                stars: 5,
-              },
-              {
-                name: "Thomas B.",
-                text: "Die Hot Stone Behandlung war unglaublich. Noch nie so entspannt gewesen. Komme definitiv wieder.",
-                stars: 5,
-              },
-              {
-                name: "Julia S.",
-                text: "Super angenehme Atmosphäre, sehr einfühlsame Therapeutin. Die Rücken-Massage hat wirklich geholfen.",
-                stars: 5,
-              },
-            ].map((t) => (
-              <div key={t.name} className="p-7 rounded-2xl bg-stone-50 border border-stone-100">
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(t.stars)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  ))}
+              { n: "01", title: "Termin buchen", desc: "Online, telefonisch oder per E-Mail. Wähle Behandlung, Datum und Uhrzeit." },
+              { n: "02", title: "Vorgespräch", desc: "Kurzes Gespräch zu deinen Wünschen, Beschwerden und Erwartungen." },
+              { n: "03", title: "Behandlung", desc: "Vollständige Aufmerksamkeit, ruhige Atmosphäre, individuelle Anpassung." },
+              { n: "04", title: "Nachruhe", desc: "Zeit zum Ankommen. Kräutertee, Ruhe, sanfter Übergang zurück in den Alltag." },
+            ].map(step => (
+              <div key={step.n} className="flex gap-12 py-8 border-b border-stone-100 group hover:bg-stone-50 px-4 transition-colors">
+                <span className="text-4xl font-light text-stone-200 group-hover:text-stone-300 transition-colors shrink-0">{step.n}</span>
+                <div>
+                  <h3 className="font-medium text-[#1c1a17] mb-2">{step.title}</h3>
+                  <p className="text-stone-500 text-sm leading-relaxed">{step.desc}</p>
                 </div>
-                <p className="text-stone-600 text-sm leading-relaxed mb-4">"{t.text}"</p>
-                <p className="font-semibold text-sm text-[#1a1714]">{t.name}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Booking CTA */}
-      <section id="termin" className="py-24 px-6 bg-[#1a1714]">
+      {/* Testimonials */}
+      <section className="py-28 px-8 bg-[#1c1a17]">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-600 mb-16 text-center">Kundenstimmen</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Maria K.", text: "Zum ersten Mal seit Jahren habe ich wirklich abschalten können. Die Hot Stone Massage war ein Erlebnis für alle Sinne.", stars: 5 },
+              { name: "Thomas B.", text: "Professionell, einfühlsam und wirklich heilsam. Meine chronischen Rückenschmerzen haben sich nach 3 Sitzungen deutlich gebessert.", stars: 5 },
+              { name: "Julia S.", text: "Das Wellness-Ritual war ein Geschenk an mich selbst. 2 Stunden komplette Auszeit. Ich komme jeden Monat wieder.", stars: 5 },
+            ].map(t => (
+              <div key={t.name} className="border border-stone-800 p-8">
+                <div className="flex gap-1 mb-6">
+                  {[...Array(t.stars)].map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
+                </div>
+                <p className="text-stone-300 leading-loose mb-6 font-light">"{t.text}"</p>
+                <p className="text-stone-500 text-xs tracking-widest uppercase">{t.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booking */}
+      <section id="termin" className="py-28 px-8 bg-[#f8f6f1]">
         <div className="max-w-2xl mx-auto text-center">
-          <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-500 block mb-5">
-            Termin buchen
-          </span>
-          <h2 className="text-4xl font-semibold text-white mb-5">
-            Bereit für deine Auszeit?
-          </h2>
-          <p className="text-stone-400 mb-10 leading-relaxed">
-            Buche deinen Termin direkt online. Schnell, einfach und ohne Wartezeit.
+          <p className="text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-6">Termin buchen</p>
+          <h2 className="text-4xl font-light mb-6">Bereit für deine Auszeit?</h2>
+          <p className="text-stone-500 leading-loose mb-12">
+            Schreib mir eine Nachricht oder ruf an. Ich melde mich innerhalb von 24 Stunden
+            mit einem passenden Termin.
           </p>
-          <a href="mailto:info@serenity-wellness.de"
-            className="inline-flex items-center gap-2 bg-white text-[#1a1714] px-8 py-4 rounded-full text-sm font-semibold hover:bg-stone-100 transition-colors">
-            Jetzt Termin anfragen
-          </a>
-          <p className="text-stone-600 text-xs mt-5">Mo–Fr 9–19 Uhr · Sa 10–16 Uhr</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:info@serenity-wellness.de" className="bg-[#1c1a17] text-white text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-stone-700 transition-colors">
+              E-Mail schreiben
+            </a>
+            <a href="tel:+4989123456" className="border border-stone-300 text-[#1c1a17] text-xs tracking-[0.2em] uppercase px-10 py-4 hover:border-stone-500 transition-colors">
+              Anrufen
+            </a>
+          </div>
+          <p className="text-stone-400 text-xs mt-8">Mo–Fr 9–19 Uhr · Sa 10–16 Uhr · Maxvorstadt, München</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#110f0c] py-10 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600">
-          <span className="font-semibold text-stone-400">Serenity Wellness · München</span>
-          <span>Demo-Website erstellt von{" "}
-            <Link href="/" className="text-stone-300 hover:text-white transition-colors">Nico Studio</Link>
-          </span>
+      <footer className="bg-[#1c1a17] py-10 px-8">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600">
+          <span className="tracking-widest uppercase text-stone-500">Serenity Wellness · München</span>
+          <span>Demo von <Link href="/" className="text-stone-400 hover:text-white transition-colors">Nico Studio</Link></span>
           <span>© 2026 Serenity Wellness</span>
         </div>
       </footer>
