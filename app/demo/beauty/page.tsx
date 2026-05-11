@@ -1,153 +1,131 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Lumière Beauty Studio – Demo | Nico Studio",
-  description: "Demo-Website für ein Beauty Studio – erstellt von Nico Studio.",
+  title: "NOIR Beauty Studio – Demo | Nico Studio",
 };
 
 export default function BeautyDemo() {
   return (
-    <main className="bg-white text-zinc-900 antialiased">
+    <main className="bg-[#080808] text-white antialiased">
 
       {/* Demo Banner */}
-      <div className="bg-zinc-900 text-white text-center py-2.5 px-4 text-[12px] tracking-wide">
-        <span className="text-zinc-400">Demo-Website von</span>{" "}
-        <Link href="/" className="font-semibold text-white hover:text-zinc-300 transition-colors">
-          Nico Studio
-        </Link>
-        <span className="text-zinc-400 mx-3">·</span>
-        <Link href="/#kontakt" className="text-rose-400 hover:text-rose-300 transition-colors font-medium">
-          Eigene Website anfragen →
-        </Link>
+      <div className="bg-white text-zinc-900 text-center py-2.5 px-4 text-[11px] tracking-[0.15em]">
+        <span className="text-zinc-500">Demo von</span>{" "}
+        <Link href="/" className="font-semibold hover:text-zinc-600 transition-colors">Nico Studio</Link>
+        <span className="text-zinc-300 mx-3">·</span>
+        <Link href="/#kontakt" className="text-rose-500 font-semibold hover:text-rose-600 transition-colors">Eigene Website anfragen →</Link>
       </div>
 
       {/* Nav */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-100">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-tight">
-            Lumière<span className="text-rose-400"> Studio</span>
-          </span>
-          <div className="hidden md:flex items-center gap-8 text-sm text-zinc-500">
-            {["Leistungen", "Galerie", "Preise", "Kontakt"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`}
-                className="hover:text-zinc-900 transition-colors">
-                {item}
-              </a>
+      <nav className="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur-xl border-b border-zinc-900">
+        <div className="max-w-7xl mx-auto px-8 h-18 flex items-center justify-between py-4">
+          <div>
+            <p className="text-[22px] font-black tracking-tighter text-white">NOIR<span className="text-rose-500">.</span></p>
+            <p className="text-[8px] tracking-[0.35em] uppercase text-zinc-600 -mt-0.5">Beauty Studio Hamburg</p>
+          </div>
+          <div className="hidden md:flex items-center gap-10">
+            {["Studio", "Services", "Galerie", "Preise", "Team"].map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-[11px] tracking-[0.15em] uppercase text-zinc-500 hover:text-white transition-colors">{item}</a>
             ))}
           </div>
-          <a href="#termin"
-            className="bg-rose-500 text-white text-sm px-5 py-2.5 rounded-full hover:bg-rose-600 transition-colors">
-            Termin buchen
+          <a href="#buchen" className="bg-rose-500 text-white text-[11px] tracking-[0.15em] uppercase px-7 py-3 font-bold hover:bg-rose-600 transition-colors">
+            Jetzt buchen
           </a>
         </div>
       </nav>
 
-      {/* Hero – editorial split */}
-      <section className="grid md:grid-cols-2 min-h-[90vh]">
-        {/* Left – image */}
-        <div className="bg-rose-50 relative flex items-center justify-center p-12 min-h-[50vh] md:min-h-0">
-          <div className="w-full max-w-sm aspect-[3/4] rounded-3xl bg-rose-100 relative">
-            <div className="absolute -bottom-6 -right-6 bg-white border border-zinc-100 shadow-xl rounded-2xl p-5">
-              <p className="text-2xl font-bold text-zinc-900">500+</p>
-              <p className="text-xs text-zinc-500 mt-0.5">glückliche Kundinnen</p>
-            </div>
-          </div>
-        </div>
-        {/* Right – text */}
-        <div className="flex flex-col justify-center px-10 md:px-16 py-16">
-          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-rose-400 block mb-6">
-            Beauty Studio · Hamburg
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.04] mb-6">
-            Schönheit,<br />
-            <span className="text-zinc-300">die bleibt.</span>
+      {/* Hero */}
+      <section className="min-h-screen grid md:grid-cols-[1.2fr_1fr]">
+        <div className="flex flex-col justify-center px-12 md:px-20 py-24">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-600 mb-10">Hamburg Eppendorf · Premium Beauty</p>
+          <h1 className="text-[72px] md:text-[96px] font-black tracking-tighter leading-[0.88] mb-10">
+            BEAUTY<br />
+            <span className="text-rose-500">RE</span>DEFINED<br />
+            <span className="text-zinc-700">FOR YOU.</span>
           </h1>
-          <p className="text-zinc-500 text-lg leading-relaxed mb-10 max-w-md">
-            Premium Beauty-Treatments für jeden Anlass. Von Nails über Lashes
-            bis zum kompletten Glow-up.
+          <p className="text-zinc-400 text-[17px] leading-[1.8] mb-14 max-w-[380px]">
+            Kein Studio von der Stange. Kein Standard-Look. Jede Behandlung ist Handwerk, jedes Ergebnis ein Statement, das zu dir passt.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <a href="#termin"
-              className="inline-flex items-center justify-center bg-zinc-900 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-zinc-700 transition-colors">
+          <div className="flex gap-4 flex-wrap">
+            <a href="#buchen" className="bg-white text-black text-[11px] tracking-[0.2em] uppercase px-10 py-4 font-black hover:bg-zinc-200 transition-colors">
               Termin buchen
             </a>
-            <a href="#galerie"
-              className="inline-flex items-center justify-center border border-zinc-200 text-zinc-600 px-8 py-4 rounded-full text-sm font-semibold hover:border-zinc-400 transition-colors">
-              Galerie ansehen
+            <a href="#services" className="border border-zinc-800 text-zinc-400 text-[11px] tracking-[0.2em] uppercase px-10 py-4 hover:border-zinc-600 hover:text-white transition-colors">
+              Services entdecken
             </a>
           </div>
-          {/* Trust pills */}
-          <div className="flex flex-wrap gap-2 mt-10">
-            {["Nail Art", "Lash Extensions", "Brow Styling", "Make-up"].map((tag) => (
-              <span key={tag} className="text-xs font-medium border border-rose-200 bg-rose-50 text-rose-600 px-3 py-1.5 rounded-full">
-                {tag}
-              </span>
+          <div className="flex gap-10 mt-16 pt-10 border-t border-zinc-900">
+            {[["500+", "Kunden"], ["6 J.", "Expertise"], ["4.9★", "Google Rating"]].map(([v, l]) => (
+              <div key={l}>
+                <p className="text-[28px] font-black text-white tracking-tight">{v}</p>
+                <p className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 mt-1">{l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-zinc-900 relative min-h-[60vh] md:min-h-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-950/30 via-transparent to-zinc-950/50" />
+          <div className="absolute bottom-10 right-10 flex flex-col gap-2">
+            {["Nail Art", "Lash Extensions", "Brow Styling", "Make-up"].map(tag => (
+              <span key={tag} className="text-[10px] tracking-[0.2em] uppercase bg-rose-500/15 border border-rose-500/30 text-rose-300 px-4 py-2 text-right">{tag}</span>
             ))}
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="leistungen" className="py-24 px-6 bg-zinc-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+      <section id="services" className="py-28 px-8 md:px-16 bg-[#080808]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between mb-20">
             <div>
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-rose-400 block mb-4">
-                Leistungen
-              </span>
-              <h2 className="text-4xl font-bold tracking-tight">Unsere Spezialitäten</h2>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-600 mb-5">Was wir tun</p>
+              <h2 className="text-[56px] font-black tracking-tighter">SERVICES</h2>
             </div>
-            <a href="#termin" className="text-sm font-semibold text-zinc-500 hover:text-zinc-900 transition-colors">
-              Alle Leistungen anfragen →
-            </a>
+            <p className="text-zinc-600 text-sm max-w-xs text-right leading-relaxed hidden md:block">Alle Behandlungen auf Termin. Persönliche Beratung inklusive.</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-px bg-zinc-900">
             {[
               {
-                cat: "Nails",
-                title: "Nail Art & Gelnägel",
-                desc: "Von klassisch bis extravagant. Perfekte Nägel, die halten.",
-                price: "ab 45 €",
-                items: ["Gelnägel", "Nageldesign", "Shellac", "Auffüllen"],
+                cat: "NAILS",
+                title: "Nail Art & Extensions",
+                desc: "Von klassisch French bis avantgardistischem 3D-Design. Gel, Acryl, Polygel. Jedes Set hält mindestens 4 Wochen und wird auf deine Nagelform abgestimmt.",
+                price: "ab 55 €",
+                items: ["Gelnägel Vollset", "Nail Art & Design", "Shellac & Gel Polish", "Auffüllen & Reparatur", "Gel French", "Nageldesign nach Wunsch"],
+                featured: true,
               },
               {
-                cat: "Lashes",
+                cat: "LASHES",
                 title: "Lash Extensions",
-                desc: "Natürlich oder dramatisch. Wimpern, die begeistern.",
-                price: "ab 89 €",
-                items: ["Classic", "Volume", "Mega Volume", "Lifting"],
+                desc: "Classic, Volume oder Mega Volume. Wir arbeiten ausschließlich mit hochwertigen Seidenwimpern und medizinischem Kleber. Natürlich oder dramatisch.",
+                price: "ab 99 €",
+                items: ["Classic Full Set", "Volume Full Set", "Mega Volume", "Lash Lifting & Tinting", "Keratin Treatment", "Nachfüllen"],
               },
               {
-                cat: "Brows",
-                title: "Brow Styling",
-                desc: "Perfekt geformte Brauen, die das Gesicht rahmen.",
-                price: "ab 35 €",
-                items: ["Zupfen", "Waxing", "Lamination", "Henna"],
+                cat: "BROWS",
+                title: "Brow Styling & Design",
+                desc: "Perfekt geformte Brauen definieren das ganze Gesicht. Wir analysieren deine Gesichtsform und erstellen das für dich passende Brow-Design.",
+                price: "ab 40 €",
+                items: ["Brow Lamination", "Henna Brows", "Waxing & Fadenepilation", "Brow Tinting", "Microblading Beratung"],
               },
               {
-                cat: "Make-up",
-                title: "Make-up & Styling",
-                desc: "Für jeden Anlass. Von natürlich bis dramatisch.",
-                price: "ab 65 €",
-                items: ["Braut Make-up", "Event Styling", "Airbrush", "Tutorial"],
+                cat: "MAKE-UP",
+                title: "Professional Make-up",
+                desc: "Für Hochzeit, Event oder ein unvergessliches Shooting. Wir arbeiten mit professionellen Produkten und Airbrush-Technik für makellose, lang anhaltende Ergebnisse.",
+                price: "ab 75 €",
+                items: ["Braut Make-up", "Event & Party Styling", "Airbrush Make-up", "Editorial & Shooting Look", "Make-up Kurs 1:1"],
+                featured: true,
               },
-            ].map((s) => (
-              <div key={s.title}
-                className="group p-8 rounded-3xl bg-white border border-zinc-100 hover:border-rose-200 hover:shadow-xl hover:shadow-rose-50 transition-all duration-300">
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-rose-400 block mb-3">
-                  {s.cat}
-                </span>
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold text-zinc-900">{s.title}</h3>
-                  <span className="text-sm font-semibold text-rose-500">{s.price}</span>
+            ].map(s => (
+              <div key={s.title} className={`group p-12 ${s.featured ? 'bg-zinc-900/60' : 'bg-[#080808]'} hover:bg-zinc-900/80 transition-colors`}>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-rose-500 mb-5">{s.cat}</p>
+                <div className="flex justify-between items-start mb-5">
+                  <h3 className="text-[26px] font-black tracking-tight leading-tight">{s.title}</h3>
+                  <span className="text-rose-400 font-bold text-[15px] shrink-0 ml-4 mt-1">{s.price}</span>
                 </div>
-                <p className="text-zinc-500 text-sm leading-relaxed mb-5">{s.desc}</p>
+                <p className="text-zinc-500 text-[14px] leading-[1.8] mb-8">{s.desc}</p>
                 <div className="flex flex-wrap gap-2">
-                  {s.items.map((item) => (
-                    <span key={item}
-                      className="text-[11px] text-zinc-500 border border-zinc-200 px-2.5 py-1 rounded-full">
-                      {item}
-                    </span>
+                  {s.items.map(d => (
+                    <span key={d} className="text-[10px] tracking-wide border border-zinc-800 text-zinc-500 px-3 py-1.5 group-hover:border-zinc-700 transition-colors">{d}</span>
                   ))}
                 </div>
               </div>
@@ -156,78 +134,132 @@ export default function BeautyDemo() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section id="galerie" className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold tracking-tight mb-14 text-center">Unsere Arbeiten</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {/* Galerie */}
+      <section id="galerie" className="py-28 px-8 md:px-16 bg-zinc-950">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-600 mb-5 text-center">Portfolio</p>
+          <h2 className="text-[56px] font-black tracking-tighter mb-20 text-center">UNSERE ARBEITEN</h2>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-1">
             {[
-              "aspect-square", "aspect-[3/4]", "aspect-square", "aspect-[4/3]",
-              "aspect-[4/3]", "aspect-square", "aspect-[3/4]", "aspect-square",
-            ].map((aspect, i) => (
-              <div key={i}
-                className={`${aspect} rounded-2xl overflow-hidden ${
-                  i % 3 === 0 ? "bg-rose-100" : i % 3 === 1 ? "bg-rose-50" : "bg-zinc-100"
-                } hover:scale-[0.98] transition-transform duration-300 cursor-pointer`}
-              />
+              { cls: "col-span-2 row-span-2", bg: "bg-zinc-800" },
+              { cls: "col-span-1", bg: "bg-zinc-900" },
+              { cls: "col-span-1", bg: "bg-rose-950/60" },
+              { cls: "col-span-1", bg: "bg-zinc-800" },
+              { cls: "col-span-1", bg: "bg-zinc-900" },
+              { cls: "col-span-2", bg: "bg-rose-950/40" },
+              { cls: "col-span-1", bg: "bg-zinc-800" },
+              { cls: "col-span-1", bg: "bg-zinc-900" },
+            ].map((item, i) => (
+              <div key={i} className={`${item.cls} ${item.bg} aspect-square hover:opacity-75 transition-opacity cursor-pointer relative group overflow-hidden`}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section id="team" className="py-28 px-8 md:px-16 bg-[#080808]">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-600 mb-5">Das Team</p>
+          <h2 className="text-[56px] font-black tracking-tighter mb-20">UNSER TEAM</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Lena M.", role: "Nail Artist · Senior", years: "6 Jahre", spec: "Nail Art, Gel Extensions, 3D Designs" },
+              { name: "Sophie K.", role: "Lash & Brow Expert", years: "4 Jahre", spec: "Classic & Volume Lashes, Lamination" },
+              { name: "Anna R.", role: "Make-up Artist", years: "5 Jahre", spec: "Bridal, Editorial, Airbrush" },
+            ].map(p => (
+              <div key={p.name} className="group">
+                <div className="aspect-[3/4] bg-zinc-900 mb-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="h-0.5 w-8 bg-rose-500 mb-4 group-hover:w-16 transition-all duration-300" />
+                  </div>
+                </div>
+                <p className="text-[20px] font-black tracking-tight">{p.name}</p>
+                <p className="text-zinc-500 text-[11px] tracking-[0.15em] uppercase mt-1">{p.role}</p>
+                <p className="text-zinc-700 text-[11px] mt-1">{p.years} Erfahrung</p>
+                <p className="text-zinc-600 text-[12px] mt-2 leading-relaxed">{p.spec}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Preise */}
+      <section id="preise" className="py-28 px-8 md:px-16 bg-zinc-950">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-600 mb-5 text-center">Investition</p>
+          <h2 className="text-[56px] font-black tracking-tighter mb-20 text-center">PREISE</h2>
+          <div className="divide-y divide-zinc-900">
+            {[
+              { cat: "Nails", items: [["Gelnägel Vollset", "ab 55 €"], ["Nail Art & Design", "ab 65 €"], ["Shellac", "ab 35 €"], ["Auffüllen", "ab 40 €"]] },
+              { cat: "Lashes", items: [["Classic Full Set", "ab 99 €"], ["Volume Full Set", "ab 129 €"], ["Mega Volume", "ab 149 €"], ["Nachfüllen", "ab 65 €"]] },
+              { cat: "Brows", items: [["Brow Lamination", "ab 55 €"], ["Henna Brows", "ab 45 €"], ["Waxing & Faden", "ab 20 €"]] },
+              { cat: "Make-up", items: [["Braut Make-up", "ab 149 €"], ["Event Styling", "ab 75 €"], ["Airbrush", "ab 95 €"]] },
+            ].map(cat => (
+              <div key={cat.cat} className="py-8">
+                <p className="text-[10px] tracking-[0.4em] uppercase text-rose-500 mb-5">{cat.cat}</p>
+                <div className="space-y-3">
+                  {cat.items.map(([name, price]) => (
+                    <div key={name} className="flex justify-between items-center hover:pl-2 transition-all">
+                      <p className="text-zinc-300 text-[15px]">{name}</p>
+                      <p className="text-[15px] font-bold text-white">{price}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-6 bg-zinc-900 text-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold tracking-tight mb-14 text-center">
-            Kundenstimmen
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+      <section className="py-28 px-8 md:px-16 bg-[#080808] border-y border-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Laura M.", text: "Die besten Nails, die ich je hatte. Halten ewig und sehen traumhaft aus.", stars: 5 },
-              { name: "Sophie T.", text: "Lash Extensions so natürlich, dass alle fragen ob es meine eigenen sind.", stars: 5 },
-              { name: "Anna K.", text: "Braut Make-up war perfekt. Hat den ganzen Tag gehalten. Absolut empfehlenswert!", stars: 5 },
-            ].map((t) => (
-              <div key={t.name} className="p-7 rounded-2xl border border-zinc-700">
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(t.stars)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-rose-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  ))}
+              { name: "LAURA M.", text: "Meine Nails von Lena sind jedes Mal ein Kunstwerk. Nie zuvor habe ich Gelnägel gesehen, die so natürlich und gleichzeitig so auffällig sind. Absolute Top-Qualität.", stars: 5 },
+              { name: "SOPHIE T.", text: "Die Lash Extensions sind unglaublich. So natural, dass mein Freund drei Wochen lang dachte, das wären meine eigenen Wimpern. Hält wirklich die versprochenen 6 Wochen.", stars: 5 },
+              { name: "ANNA K.", text: "Für meine Hochzeit wollte ich perfektes Make-up. Anna hat nicht nur meine Erwartungen erfüllt, sie hat sie übertroffen. 14 Stunden Halt, traumhaftes Ergebnis, tolle Beratung.", stars: 5 },
+            ].map(t => (
+              <div key={t.name} className="p-10 border border-zinc-900 hover:border-zinc-700 transition-colors">
+                <div className="flex gap-1 mb-8">
+                  {[...Array(t.stars)].map((_, i) => <span key={i} className="text-rose-500 text-lg">★</span>)}
                 </div>
-                <p className="text-zinc-300 text-sm leading-relaxed mb-4">"{t.text}"</p>
-                <p className="font-semibold text-sm text-white">{t.name}</p>
+                <p className="text-zinc-300 text-[15px] leading-[1.85] mb-8 font-light">"{t.text}"</p>
+                <p className="text-[10px] tracking-[0.3em] text-zinc-600">{t.name}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Booking */}
-      <section id="termin" className="py-24 px-6 bg-rose-500">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-5">
-            Bereit für deinen Glow-up?
-          </h2>
-          <p className="text-rose-100 mb-10 leading-relaxed">
-            Sichere dir jetzt deinen Wunschtermin. Online, schnell und unkompliziert.
-          </p>
-          <a href="mailto:info@lumiere-studio.de"
-            className="inline-flex items-center gap-2 bg-white text-rose-600 px-8 py-4 rounded-full text-sm font-bold hover:bg-rose-50 transition-colors shadow-lg">
+      {/* Booking CTA */}
+      <section id="buchen" className="py-28 px-8 bg-rose-500">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-[64px] font-black tracking-tighter text-white mb-6 leading-tight">READY FOR<br />YOUR GLOW-UP?</h2>
+          <p className="text-rose-100 text-[18px] leading-relaxed mb-14">Sichere dir jetzt deinen Termin. Online, sofort, ohne Wartezeit.</p>
+          <a href="mailto:info@noir-beauty.de" className="inline-block bg-white text-rose-600 text-[11px] tracking-[0.3em] uppercase font-black px-14 py-5 hover:bg-rose-50 transition-colors">
             Termin anfragen
           </a>
-          <p className="text-rose-200 text-xs mt-5">Di–Sa 10–19 Uhr · Sonntags nach Vereinbarung</p>
+          <p className="text-rose-200 text-[11px] tracking-[0.2em] mt-10 uppercase">Di–Sa 10–20 Uhr · Hamburg Eppendorf</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-900 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <span className="font-semibold text-zinc-300">Lumière Beauty Studio · Hamburg</span>
-          <span>Demo-Website von{" "}
-            <Link href="/" className="text-zinc-300 hover:text-white transition-colors">Nico Studio</Link>
-          </span>
-          <span>© 2026 Lumière Studio</span>
+      <footer className="bg-[#030303] py-12 px-8 border-t border-zinc-900">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] text-zinc-800">
+          <p className="font-black tracking-tight text-zinc-600 text-[16px]">NOIR<span className="text-rose-500">.</span></p>
+          <div className="flex gap-8 text-zinc-700">
+            <a href="#" className="hover:text-zinc-400 transition-colors">Impressum</a>
+            <a href="#" className="hover:text-zinc-400 transition-colors">Datenschutz</a>
+            <a href="#buchen" className="hover:text-zinc-400 transition-colors">Kontakt</a>
+          </div>
+          <div className="text-right">
+            <p className="text-zinc-700">Demo von <Link href="/" className="text-zinc-600 hover:text-white transition-colors">Nico Studio</Link></p>
+            <p className="text-zinc-800 mt-0.5">© 2026 NOIR Beauty Studio</p>
+          </div>
         </div>
       </footer>
     </main>

@@ -289,7 +289,61 @@ function CoachingPreview() {
   );
 }
 
-// ─── Portfolio Card ────────────────────────────────────────────────────────────
+function BookingPreview() {
+  return (
+    <div className="bg-[#f7f4ef] w-full h-full font-sans">
+      <div className="bg-[#1a1714] px-4 py-3">
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <div className="text-[8px] tracking-[0.15em] uppercase text-white">Serenity</div>
+            <div className="text-[5px] tracking-widest text-stone-500 uppercase">Wellness · München</div>
+          </div>
+          <div className="text-[5px] text-stone-600">+49 89 123 456</div>
+        </div>
+        <div className="flex items-center gap-0">
+          {["Behandlung", "Datum", "Daten", "Bestätigung"].map((label, idx) => (
+            <div key={label} className="flex items-center flex-1 last:flex-none">
+              <div className="flex flex-col items-center">
+                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[7px] font-bold ${idx === 0 ? 'bg-white text-zinc-900' : idx < 1 ? 'bg-emerald-500 text-white' : 'bg-zinc-800 text-zinc-500'}`}>{idx < 0 ? "✓" : idx + 1}</div>
+                <div className={`text-[5px] mt-1 ${idx === 0 ? 'text-white' : 'text-zinc-600'}`}>{label}</div>
+              </div>
+              {idx < 3 && <div className="h-px flex-1 mx-1 mb-3 bg-zinc-800" />}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="p-4">
+        <div className="text-[8px] font-light text-zinc-800 mb-1">Behandlung wählen</div>
+        <div className="text-[6px] text-zinc-400 mb-3">Welche Behandlung darf es sein?</div>
+        <div className="space-y-1.5">
+          {[
+            { name: "Klassische Massage", dur: "60 Min.", price: "75 €", sel: true },
+            { name: "Hot Stone Massage", dur: "90 Min.", price: "115 €" },
+            { name: "Aromatherapie", dur: "75 Min.", price: "95 €" },
+          ].map(s => (
+            <div key={s.name} className={`flex items-center justify-between p-2 rounded-lg border-2 ${s.sel ? 'border-zinc-900 bg-white shadow-sm' : 'border-zinc-200 bg-white'}`}>
+              <div className="flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full border-2 flex items-center justify-center ${s.sel ? 'border-zinc-900 bg-zinc-900' : 'border-zinc-300'}`}>
+                  {s.sel && <span className="text-white text-[5px] font-bold">✓</span>}
+                </div>
+                <div>
+                  <div className={`text-[7px] font-semibold ${s.sel ? 'text-zinc-900' : 'text-zinc-700'}`}>{s.name}</div>
+                  <div className="text-[5px] text-zinc-400">{s.dur}</div>
+                </div>
+              </div>
+              <div className="text-[7px] font-semibold text-zinc-900">{s.price}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 bg-zinc-900 rounded-full py-2 flex items-center justify-center">
+          <span className="text-white text-[7px] font-semibold">Weiter zum Datum →</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 
 interface CardProps {
   tag: string;
@@ -389,6 +443,14 @@ const items: CardProps[] = [
     features: ["Persönlich", "Testimonials", "Pakete", "Erstgespräch"],
     demoHref: "/demo/coaching",
     preview: <CoachingPreview />,
+  },
+  {
+    tag: "Feature",
+    title: "Online-Buchungssystem",
+    description: "Interaktives Buchungssystem mit Kalender, Zeitslots, Kundendaten und Bestätigung. Live ausprobieren.",
+    features: ["Interaktiver Kalender", "Echtzeit-Verfügbarkeit", "4-Schritt-Prozess", "Mobile-optimiert"],
+    demoHref: "/demo/booking",
+    preview: <BookingPreview />,
   },
 ];
 
